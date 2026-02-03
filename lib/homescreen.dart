@@ -857,207 +857,74 @@ class TokenReceipt extends StatelessWidget {
   Widget build(BuildContext context) {
     return Receipt(
       onInitialized: onInitialized,
-      builder: (context) => Container(
-        // padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 40),
-        decoration: const BoxDecoration(
-          color: Colors.white,
-        ),
-        child: Column(
-          children: [
-            // Clinic Header - Optimized for B&W
-            Column(
-              children: [
-                Text(
-                  "HOPE HOMOEOPATHY",
-                  style: TextStyle(
-                    fontSize: 28,
-                    fontWeight:
-                        FontWeight.w900, // Extra bold for better contrast
-                    color: Colors.black, // Pure black
-                    letterSpacing: 2,
-                  ),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  "Malakpet, Hyderabad",
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w700,
-                    color: Colors.black, // Pure black
-                    letterSpacing: 1,
-                  ),
-                ),
-                const SizedBox(height: 4),
-                Divider(color: Colors.black, thickness: 2),
-                const SizedBox(height: 4),
-                Text(
-                  "Dr. Syed Saadullah",
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w700,
-                    color: Colors.black,
-                  ),
-                ),
-              ],
+      builder: (context) => Column(
+        children: [
+          const SizedBox(height: 24),
+          const Text(
+            "HOPE HOMOEOPATHY",
+            style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
+          ),
+          const Text(
+            "Dr. Syed Saadullah",
+            style: TextStyle(fontSize: 22),
+          ),
+          const SizedBox(height: 6),
+          const Text(
+            "Token No.",
+            style: TextStyle(fontSize: 10),
+          ),
+          const SizedBox(height: 6),
+          Text(
+            tokenNumber.toString(),
+            style: const TextStyle(
+              fontSize: 48,
+              fontWeight: FontWeight.bold,
             ),
-
-            const SizedBox(height: 32),
-
-            // Token Number - High contrast design
-            Container(
-              padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 40),
-              decoration: BoxDecoration(
-                // Use patterns instead of color for thermal printers
-                border: Border.all(color: Colors.black, width: 3),
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Column(
+          ),
+          const SizedBox(height: 15),
+          Text(
+            DateFormat('dd/MM/yyyy hh:mm a').format(DateTime.now()),
+            style: const TextStyle(fontSize: 12),
+          ),
+          const Text(
+            "Valid between 10:00 AM to 5:00 PM",
+            style: TextStyle(fontSize: 12),
+          ),
+          const Text(
+            "* Valid for 1 Patient Only *",
+            style: TextStyle(fontSize: 12),
+          ),
+          const Divider(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "TOKEN NUMBER",
-                    style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w800,
-                      color: Colors.black,
-                      letterSpacing: 3,
-                    ),
+                    "Please wait. Thank you",
+                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
                   ),
-                  const SizedBox(height: 6),
                   Text(
-                    tokenNumber.toString(),
-                    style: const TextStyle(
-                      fontSize: 72,
-                      fontWeight: FontWeight.w900, // Maximum boldness
-                      color: Colors.black,
-                      letterSpacing: 2,
-                    ),
+                    "To check status, visit:",
+                    style: TextStyle(fontSize: 14),
+                  ),
+                  Text(
+                    "https://hopehomeo-tokens.vercel.app/",
+                    style: TextStyle(fontSize: 8),
                   ),
                 ],
               ),
-            ),
-
-            const SizedBox(height: 16),
-
-            // Details - Optimized for clarity
-            Container(
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.black, width: 1),
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Column(
-                children: [
-                  Text(
-                    DateFormat('dd MMMM yyyy').format(DateTime.now()),
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700,
-                      color: Colors.black,
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    DateFormat('hh:mm a').format(DateTime.now()),
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w800,
-                      color: Colors.black,
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  Divider(color: Colors.black, height: 1),
-                  const SizedBox(height: 12),
-                  Text(
-                    "VALID: 10:00 AM - 5:00 PM",
-                    style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w700,
-                      color: Colors.black,
-                    ),
-                  ),
-                  Text(
-                    "* FOR 1 PATIENT ONLY *",
-                    style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w800,
-                      color: Colors.black,
-                      fontStyle: FontStyle.italic,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-
-            const SizedBox(height: 16),
-
-            // Footer - Simplified for thermal printing
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Text(
-                  "PLEASE WAIT FOR YOUR TURN",
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w900,
-                    color: Colors.black,
-                    letterSpacing: 1,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-                // const SizedBox(height: 16),
-                Row(
-                  children: [
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Queue Status:",
-                            style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w700,
-                              color: Colors.black,
-                            ),
-                          ),
-                          const SizedBox(height: 4),
-                          Text(
-                            "https://hopehomeo-tokens.vercel.app/",
-                            style: TextStyle(
-                              fontSize: 10,
-                              fontWeight: FontWeight.w700,
-                              color: Colors.black,
-                              decoration: TextDecoration.underline,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    // QR Code placeholder - will print as black square
-                    Container(
-                        width: 60,
-                        height: 60,
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black, width: 2),
-                        ),
-                        child: Image.asset("assets/qr.png")),
-                  ],
-                ),
-                const SizedBox(height: 16),
-                Divider(color: Colors.black, thickness: 2),
-                const SizedBox(height: 8),
-                Text(
-                  "Thank you for your patience",
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w700,
-                    color: Colors.black,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-              ],
-            ),
-          ],
-        ),
+              Container(
+                height: 50,
+                width: 50,
+                child: Image.asset("assets/qr.png"),
+              )
+            ],
+          ),
+          const SizedBox(height: 32),
+        ],
       ),
     );
   }
